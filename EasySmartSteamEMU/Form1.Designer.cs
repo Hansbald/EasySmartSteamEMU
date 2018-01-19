@@ -60,7 +60,6 @@
             this.tbPath.Name = "tbPath";
             this.tbPath.Size = new System.Drawing.Size(200, 20);
             this.tbPath.TabIndex = 1;
-            this.tbPath.DragDrop += new System.Windows.Forms.DragEventHandler(this.tbPath_DragDrop);
             // 
             // btnBrowse
             // 
@@ -176,6 +175,8 @@
             this.Text = "Easy SSE Linker";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.frmMain_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.frmMain_DragEnter);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

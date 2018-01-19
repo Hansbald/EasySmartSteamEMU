@@ -26,6 +26,7 @@ namespace EasySmartSteamEMU
         private void Form1_Load(object sender, EventArgs e)
         {
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.AllowDrop = true;
             File.WriteAllBytes(Path.GetTempPath() + "\\rh.exe", EasySmartSteamEMU.Properties.Resources.ResourceHacker);
             cbExeIcon.Checked = true;
             cb64Bit.Checked = true;
@@ -135,9 +136,19 @@ namespace EasySmartSteamEMU
             MessageBox.Show("Created by Hansbald");
         }
 
-        private void tbPath_DragDrop(object sender, DragEventArgs e)
+        private void frmMain_DragDrop(object sender, DragEventArgs e)
         {
+            string[] fileList = (string[]) e.Data.GetData(DataFormats.FileDrop, false);
+            if(fileList[0].EndsWith(".exe"))
+                tbPath.Text = fileList[0];
+        }
 
+        private void frmMain_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy; 
+            else
+                e.Effect = DragDropEffects.None;
         }
     }
 }
