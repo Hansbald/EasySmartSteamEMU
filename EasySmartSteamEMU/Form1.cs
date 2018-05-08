@@ -141,6 +141,9 @@ namespace EasySmartSteamEMU
             string[] fileList = (string[]) e.Data.GetData(DataFormats.FileDrop, false);
             if(fileList[0].EndsWith(".exe"))
                 tbPath.Text = fileList[0];
+
+            ExtractIcon(Path.GetFileName(tbPath.Text));
+            CreateSSE(tbPath.Text);
         }
 
         private void frmMain_DragEnter(object sender, DragEventArgs e)
